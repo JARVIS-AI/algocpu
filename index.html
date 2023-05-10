@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+
+    <meta name="description" content="CPU Scheduling Algorithm Visualizer and Calculator" />
+    <meta name="keywords" content="HTML, CSS, JavaScript" />
+    <meta name="author" content="Vasu Gondaliya - Jarvis Mercer" />
+
+    <meta property="og:description" content="CPU Scheduling Algorithm Visualizer and Calculator" />
+    <meta property="og:title" content="CPU Scheduling Algorithms" />
+
+    <!-- Title -->
+    <title>CPU Scheduling Algorithms</title>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/favicon.png" type="Image/x-png" />
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <div class="container fixed-top">
+        <nav class="navbar navbar-expand-lg bg-light shadow-sm">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">CSA</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" target="_blank" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" target="_blank" href="/doc">Doc</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
+                            <ul class="dropdown-menu animate slideIn">
+                                <li><a class="dropdown-item" target="_blank" href="/dev">Devs</a></li>
+                                <li><a class="dropdown-item" target="_blank" href="/about">About</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" target="_blank" href="/wiki">Wikipedia Links</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="/donate">Donate</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-dark" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container" style="padding: 45px 16px 16px;">
+        <div class="row align-items-center justify-content-center ">
+            <div class="col align-self-center" style="text-align: center;">
+                <h1>Scheduling Algorithms <span class="badge bg-black"> CPU </span></h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h3>Instructions :</h3>
+    </div>
+    <div class="container">
+        <ol class="instructions">
+            <li>Tiebreaker is Process ID.</li>
+            <li>When burst time is criteria, total burst time is taken into consideration.</li>
+            <li>Context Switch not considered at start and end of processes.</li>
+        </ol>
+    </div>
+
+    <div class="container">
+        <h3>Preferences :</h3>
+    </div>
+
+    <div class="container">
+        <ol class="preferences">
+            <li> Priority : 1 is
+                <button class="btn btn-outline-dark" id="priority-toggle-btn" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <span id="priority-preference">high</span>
+                    <i class="fa fa-refresh"></i>
+                </button>
+            </li>
+        </ol>
+    </div>
+
+    <div class="container">
+        <form id="algorithms-form">
+            <div class="form-group">
+                <label for="algo"> <h3>Algorithms : </h3></label>
+                <div class="container" style="padding: 35px;">
+                    <select class="form-select form-select-sm shadow-sm" name="algo" id="algo" style="text-align: center;width: max-content;">
+                        <option value="fcfs">First Come First Serve (FCFS)</option>
+                        <option value="sjf">Shortest Job First (SJF)</option>
+                        <option value="ljf">Longest Job First (LJF)</option>
+                        <option value="srtf">Shortest Remaining Job First (SRTF)</option>
+                        <option value="lrtf">Longest Remaining Job First (LRTF)</option>
+                        <option value="rr">Round Robin</option>
+                        <option value="pnp">Priority (Non Preemptive)</option>
+                        <option value="pp">Priority (Preemptive)</option>
+                        <option value="hrrn">Highest Response Ratio Next (HRRN)</option>
+                        <option value="MLFQ">Multi Level Feedback Queue (MLFQ)</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <br/>
+
+    <div class="container table-responsive">
+        <table class="shadow-sm main-table table table-sm table-striped table-bordered table-hover rounded rounded-lg">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col" class="process-id">Process ID</th>
+                <th scope="col" class="priority hide">Priority</th>
+                <th scope="col" class="arrival-time">Arrival Time</th>
+                <th scope="col" class="process-time" colspan="1">Process Time</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="process-id" rowspan="2">
+                    <p style="margin-top: 1rem;">P1</p>
+                </td>
+                <td class="priority hide" rowspan="2">
+                    <input class="form-control form-control-sm" type="number" min="1" step="1" value="1" style="margin-top: 1rem;">
+                </td>
+                <td class="arrival-time" rowspan="2">
+                    <input class="form-control form-control-sm" type="number" min="0" step="1" value="0" style="margin-top: 1rem;">
+                </td>
+                <td class="process-time cpu process-heading" colspan="">CPU</td>
+                <td>
+                    <button type="button" class="add-process-btn btn btn-outline-dark fa fa-plus"></button>
+                </td>
+                <td>
+                    <button type="button" class="remove-process-btn btn btn-outline-dark fa fa-minus"></button>
+                </td>
+            </tr>
+            <tr>
+                <td class="process-time cpu process-input">
+                    <input class="form-control form-control-sm" type="number" min="1" step="1" value="1">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br/>
+
+    <div class="container text-center">
+        <div class="btn-group-sm">
+            <button type="button" class="btn btn-primary add-btn shadow-lg rounded me-5 zoom">Add Process
+                <span class="badge badge-light"><span class="fa fa-plus"></span></span>
+            </button>
+            <button type="button" class="btn btn-dark remove-btn shadow-lg rounded zoom">Delete Process
+                <span class="badge badge-light"><span class="fa fa-minus"></span></span>
+            </button>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="container mb-5">
+        <label for="context-switch" style="margin-bottom: 1rem;">Set Context Switch Time For CPU and TSS (Task State Segment)</label>
+        <div class="row justify-content-md-center">
+            <div id="context-switch-div">
+                <div class="container container-sm container-md container-lg container-xl container-xxl input-group mb-3" id="custom-media-TCS">
+                    <span class="input-group-text">TCS</span>
+                    <span class="input-group-text">Context Switch Time</span>
+                    <input type="number" class="form-control form-select-sm" placeholder="Number" aria-label="Context Switch" aria-describedby="Context Switch" name="Context Switch" id="context-switch" min="0" step="1" value="0">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container hide" id="time-quantum">
+        <label for="tq" style="margin-bottom: 1rem;">Time Quantum For CPU and TSS, Queue Pages</label>
+        <div class="row justify-content-md-center">
+            <div>
+                <div class="container container-sm container-md container-lg container-xl container-xxl input-group mb-3" id="custom-media-TQ">
+                    <span class="input-group-text">TQ</span>
+                    <span class="input-group-text">Queue / Quantum Time</span>
+                    <input type="number" class="form-control form-select-sm" placeholder="Number" name="Time Quantum" id="tq" min="1" step="1" value="1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="container" style="text-align: center; margin-bottom: 5rem;">
+        <button type="button" class="btn btn-primary shadow zoom me-5" id="calculate">Calculate</button>
+        <button type="button" class="btn btn-warning hover-shadow zoom" id="reset" onClick="window.location.reload();">Reset</button>
+    </div>
+
+    <div class="container" id="output"></div>
+
+    <figure class="text-center mt-auto mt-lg-auto mt-sm-auto mt-md-auto mt-xl-auto mt-6">
+        <blockquote class="blockquote">
+            <p>The only and absolute fair thing in the world is DEATH</p>
+        </blockquote>
+        <figcaption class="blockquote-footer">
+            Lord Aines <cite title="Source Title">Overlord</cite>
+        </figcaption>
+    </figure>
+
+    <!-- Script -->
+    <!-- Google Chart JS -->
+    <script type="text/javascript" src="js/loader.js"></script>
+    <!-- Chart JS -->
+    <script type="text/javascript" src="js/Chart.min.js"></script>
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.3.1.slim.min.js"></script>
+    <!-- Bootstrap -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- Custom JS -->
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+
+</html>
