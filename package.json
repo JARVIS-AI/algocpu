@@ -1,0 +1,17 @@
+{
+  "name": "cpu-scheduling-algorithms",
+  "version": "4.12.0",
+  "Author": "JARVIS-AI",
+  "homepage": "https://github.com/JARVIS-AI",
+  "author": {
+    "email": "ams.h4ck3r@gmail.com",
+    "name": "Jarvis",
+    "url": "https://ninja.amsl.ir"
+  },
+  "scripts": {
+    "dev": "serve ."
+  },
+  "dependencies": {
+    "serve": "^14.2.0"
+  }
+}
