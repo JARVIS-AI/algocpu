@@ -2,7 +2,7 @@
 // if amsl != 1 {
 //     amsl = 1;
 // }
-
+var timeerams = 1;
 
 //priority preferences change
 let priorityPreference = 1;
