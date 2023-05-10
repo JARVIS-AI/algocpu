@@ -1,4 +1,4 @@
-
+var amsl = 0;
 
 
 //priority preferences change
