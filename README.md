@@ -1,2 +1,2 @@
-# algocpu
-CPU Scheduling Algorithm in Static Webpage
+# CPU Scheduling Algorithm
+
