@@ -18,7 +18,7 @@ body {
 }
 
 .teko {
-    font-family: 'Teko', sans-serif;
+    font-family: 'Teko', sans-serif !important;
 }
 
 table,
