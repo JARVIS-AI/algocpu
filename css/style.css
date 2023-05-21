@@ -9,12 +9,16 @@
 }
 
 * {
-    font-family: Roboto, Source Sans Pro, sans-serif, serif;;
+    font-family: Roboto, Source Sans Pro, sans-serif, serif;
     font-size: 15px;
 }
 
 body {
     margin: 30px 30px;
+}
+
+.teko {
+    font-family: Teko;
 }
 
 table,
